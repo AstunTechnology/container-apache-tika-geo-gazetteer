@@ -11,7 +11,7 @@ if [[ -z "${GAZETTEER_ENDPOINT}" ]]; then
     exit 1
 fi
 
-echo "setting gazetter.rest.api=${GAZETTEER_ENDPOINT}"
-echo "gazetter.rest.api=${GAZETTEER_ENDPOINT}" > "${PWD}/resources/org/apache/tika/parser/geo/topic/GeoTopicConfig.properties"
+echo "setting gazetteer.rest.api=${GAZETTEER_ENDPOINT}"
+echo "gazetteer.rest.api=${GAZETTEER_ENDPOINT}" > "${PWD}/resources/org/apache/tika/parser/geo/topic/GeoTopicConfig.properties"
 
 java -server -classpath "${PWD}/resources:${PWD}/tika-server-standard-2.6.0.jar" org.apache.tika.server.TikaServerCli -h 0.0.0.0 $@
