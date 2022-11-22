@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y unzip && unzip gb.zip
 # add in the mapped CSV
 COPY test.csv /srv/lucene-geo-gazetteer/test.csv
 
-RUN /srv/lucene-geo-gazetteer -i geoIndex -b test.csv
+RUN src/main/bin/lucene-geo-gazetteer -i geoIndex -b test.csv
 
 FROM openjdk:8-jre-slim
 WORKDIR /srv
