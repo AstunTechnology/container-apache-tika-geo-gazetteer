@@ -6,10 +6,11 @@ WORKDIR /srv/lucene-geo-gazetteer
 RUN mvn install assembly:assembly
 COPY gb.zip .
 RUN apt-get update && apt-get install -y unzip && unzip gb.zip
-# TODO: add in the Python script
-# TODO: run the Python script
-# TODO: copy the output file in  
-RUN src/main/bin/lucene-geo-gazetteer -i geoIndex -b allCountries.txt
+
+# add in the mapped CSV
+COPY home/astun/osopennames-geonames-columnsmap/output/test.csv srv/lucene-geo-gazetteer/test.csv
+
+RUN srv/lucene-geo-gazetteer -i geoIndex -b test.csv
 
 FROM openjdk:8-jre-slim
 WORKDIR /srv
