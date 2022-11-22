@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y git\
     && git clone --depth=1 https://github.com/chrismattmann/lucene-geo-gazetteer.git
 WORKDIR /srv/lucene-geo-gazetteer
 RUN mvn install assembly:assembly
-COPY allCountries.zip .
-RUN apt-get update && apt-get install -y unzip && unzip allCountries.zip
+COPY gb.zip .
+RUN apt-get update && apt-get install -y unzip && unzip gb.zip
 RUN src/main/bin/lucene-geo-gazetteer -i geoIndex -b allCountries.txt
 
 FROM openjdk:8-jre-slim
