@@ -21,7 +21,7 @@ docker build --rm --tag apache-tika-geotopic .
 ### Running the GeoTopicParser cli tool
 
 ```bash
-docker run --rm -it --entrypoint lucene-geo-gazetteer apache-tika-geotopic  -s Pasadena Texas -json
+docker run --rm -it --entrypoint lucene-geo-gazetteer apache-tika-geotopic -s Foulness -json
 ```
 
 ### Running the GeoTopicParser API server
@@ -42,8 +42,9 @@ docker run --rm -it\
 ```
 
 ```bash
-$ curl "http://localhost:8765/api/search?s=Pasadena&s=Texas"
-{"Texas":[{"name":"Texas","countryCode":"US","admin1Code":"TX","admin2Code":"","latitude":31.25044,"longitude":-99.25061}],"Pasadena":[{"name":"Pasadena","countryCode":"US","admin1Code":"CA","admin2Code":"037","latitude":34.14778,"longitude":-118.14452}]}
+$ curl "http://geoparser.astuntechnology.com:8765/api/search?s=Foulness&c=5"
+
+{"Foulness":[{"name":"Foulness Sands","countryCode":"GB","admin1Code":"SS3","admin2Code":"Essex","latitude":607640.0,"longitude":196378.0},{"name":"Foulness Point","countryCode":"GB","admin1Code":"SS3","admin2Code":"Essex","latitude":604610.0,"longitude":195118.0}]}
 ```
 
 ### Running GeoTopicParser enabled tika.
